@@ -8,26 +8,9 @@ export async function DELETE(
   { params }: { params: { orderId: string; storeId: string } }
 ) {
   try {
-    // const { userId } = auth()
-
-    // if (!userId) {
-    //   return new NextResponse('Unauthenticated', { status: 403 })
-    // }
-
     if (!params.orderId) {
       return new NextResponse('Order id is required', { status: 400 })
     }
-
-    // const storeByUserId = await prismadb.store.findFirst({
-    //   where: {
-    //     id: params.storeId,
-    //     userId,
-    //   },
-    // })
-
-    // if (!storeByUserId) {
-    //   return new NextResponse('Unauthorized', { status: 405 })
-    // }
 
     const order = await prismadb.order.delete({
       where: {
